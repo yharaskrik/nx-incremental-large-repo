@@ -16,10 +16,15 @@
             "main": "apps/app0/src/main.ts",
             "polyfills": "apps/app0/src/polyfills.ts",
             "tsConfig": "apps/app0/tsconfig.app.json",
-            "aot": true,
             "assets": ["apps/app0/src/favicon.ico", "apps/app0/src/assets"],
             "styles": ["apps/app0/src/styles.css"],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -87,131 +92,6 @@
           "outputs": ["coverage/apps/app0"]
         }
       }
-    },
-    "app1": {
-      "projectType": "application",
-      "schematics": {},
-      "root": "apps/app1",
-      "sourceRoot": "apps/app1/src",
-      "prefix": "largerepo",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "outputPath": "dist/apps/app1",
-            "index": "apps/app1/src/index.html",
-            "main": "apps/app1/src/main.ts",
-            "polyfills": "apps/app1/src/polyfills.ts",
-            "tsConfig": "apps/app1/tsconfig.app.json",
-            "aot": true,
-            "assets": ["apps/app1/src/favicon.ico", "apps/app1/src/assets"],
-            "styles": ["apps/app1/src/styles.css"],
-            "scripts": []
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "apps/app1/src/environments/environment.ts",
-                  "with": "apps/app1/src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
-                }
-              ]
-            }
-          },
-          "outputs": ["{options.outputPath}"]
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "app1:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "app1:build:production"
-            }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "app1:build"
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "apps/app1/src/**/*.ts",
-              "apps/app1/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "apps/app1/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": ["coverage/apps/app1"]
-        }
-      }
-    },
-    "app0-lib0-lib0": {
-      "projectType": "library",
-      "root": "libs/app0/lib0/lib0",
-      "sourceRoot": "libs/app0/lib0/lib0/src",
-      "prefix": "largerepo",
-      "architect": {
-        "build": {
-          "builder": "@nrwl/angular:ng-packagr-lite",
-          "options": {
-            "tsConfig": "libs/app0/lib0/lib0/tsconfig.lib.json",
-            "project": "libs/app0/lib0/lib0/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "libs/app0/lib0/lib0/tsconfig.lib.prod.json"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/app0/lib0/lib0/src/**/*.ts",
-              "libs/app0/lib0/lib0/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/app0/lib0/lib0/jest.config.js",
-            "passWithNoTests": true
-          },
-          "outputs": ["coverage/libs/app0/lib0/lib0"]
-        }
-      },
-      "schematics": {}
     },
     "app0-lib0-childlib0": {
       "projectType": "library",
@@ -593,21 +473,21 @@
       },
       "schematics": {}
     },
-    "app0-lib1-lib1": {
+    "app0-lib0-lib0": {
       "projectType": "library",
-      "root": "libs/app0/lib1/lib1",
-      "sourceRoot": "libs/app0/lib1/lib1/src",
+      "root": "libs/app0/lib0/lib0",
+      "sourceRoot": "libs/app0/lib0/lib0/src",
       "prefix": "largerepo",
       "architect": {
         "build": {
           "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
-            "tsConfig": "libs/app0/lib1/lib1/tsconfig.lib.json",
-            "project": "libs/app0/lib1/lib1/ng-package.json"
+            "tsConfig": "libs/app0/lib0/lib0/tsconfig.lib.json",
+            "project": "libs/app0/lib0/lib0/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "libs/app0/lib1/lib1/tsconfig.lib.prod.json"
+              "tsConfig": "libs/app0/lib0/lib0/tsconfig.lib.prod.json"
             }
           }
         },
@@ -615,18 +495,18 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/app0/lib1/lib1/src/**/*.ts",
-              "libs/app0/lib1/lib1/src/**/*.html"
+              "libs/app0/lib0/lib0/src/**/*.ts",
+              "libs/app0/lib0/lib0/src/**/*.html"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/app0/lib1/lib1/jest.config.js",
+            "jestConfig": "libs/app0/lib0/lib0/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/libs/app0/lib1/lib1"]
+          "outputs": ["coverage/libs/app0/lib0/lib0"]
         }
       },
       "schematics": {}
@@ -1011,21 +891,21 @@
       },
       "schematics": {}
     },
-    "app0-lib2-lib2": {
+    "app0-lib1-lib1": {
       "projectType": "library",
-      "root": "libs/app0/lib2/lib2",
-      "sourceRoot": "libs/app0/lib2/lib2/src",
+      "root": "libs/app0/lib1/lib1",
+      "sourceRoot": "libs/app0/lib1/lib1/src",
       "prefix": "largerepo",
       "architect": {
         "build": {
           "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
-            "tsConfig": "libs/app0/lib2/lib2/tsconfig.lib.json",
-            "project": "libs/app0/lib2/lib2/ng-package.json"
+            "tsConfig": "libs/app0/lib1/lib1/tsconfig.lib.json",
+            "project": "libs/app0/lib1/lib1/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "libs/app0/lib2/lib2/tsconfig.lib.prod.json"
+              "tsConfig": "libs/app0/lib1/lib1/tsconfig.lib.prod.json"
             }
           }
         },
@@ -1033,18 +913,18 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/app0/lib2/lib2/src/**/*.ts",
-              "libs/app0/lib2/lib2/src/**/*.html"
+              "libs/app0/lib1/lib1/src/**/*.ts",
+              "libs/app0/lib1/lib1/src/**/*.html"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/app0/lib2/lib2/jest.config.js",
+            "jestConfig": "libs/app0/lib1/lib1/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/libs/app0/lib2/lib2"]
+          "outputs": ["coverage/libs/app0/lib1/lib1"]
         }
       },
       "schematics": {}
@@ -1429,21 +1309,21 @@
       },
       "schematics": {}
     },
-    "app0-lib3-lib3": {
+    "app0-lib2-lib2": {
       "projectType": "library",
-      "root": "libs/app0/lib3/lib3",
-      "sourceRoot": "libs/app0/lib3/lib3/src",
+      "root": "libs/app0/lib2/lib2",
+      "sourceRoot": "libs/app0/lib2/lib2/src",
       "prefix": "largerepo",
       "architect": {
         "build": {
           "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
-            "tsConfig": "libs/app0/lib3/lib3/tsconfig.lib.json",
-            "project": "libs/app0/lib3/lib3/ng-package.json"
+            "tsConfig": "libs/app0/lib2/lib2/tsconfig.lib.json",
+            "project": "libs/app0/lib2/lib2/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "libs/app0/lib3/lib3/tsconfig.lib.prod.json"
+              "tsConfig": "libs/app0/lib2/lib2/tsconfig.lib.prod.json"
             }
           }
         },
@@ -1451,18 +1331,18 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/app0/lib3/lib3/src/**/*.ts",
-              "libs/app0/lib3/lib3/src/**/*.html"
+              "libs/app0/lib2/lib2/src/**/*.ts",
+              "libs/app0/lib2/lib2/src/**/*.html"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/app0/lib3/lib3/jest.config.js",
+            "jestConfig": "libs/app0/lib2/lib2/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/libs/app0/lib3/lib3"]
+          "outputs": ["coverage/libs/app0/lib2/lib2"]
         }
       },
       "schematics": {}
@@ -1847,21 +1727,21 @@
       },
       "schematics": {}
     },
-    "app0-lib4-lib4": {
+    "app0-lib3-lib3": {
       "projectType": "library",
-      "root": "libs/app0/lib4/lib4",
-      "sourceRoot": "libs/app0/lib4/lib4/src",
+      "root": "libs/app0/lib3/lib3",
+      "sourceRoot": "libs/app0/lib3/lib3/src",
       "prefix": "largerepo",
       "architect": {
         "build": {
           "builder": "@nrwl/angular:ng-packagr-lite",
           "options": {
-            "tsConfig": "libs/app0/lib4/lib4/tsconfig.lib.json",
-            "project": "libs/app0/lib4/lib4/ng-package.json"
+            "tsConfig": "libs/app0/lib3/lib3/tsconfig.lib.json",
+            "project": "libs/app0/lib3/lib3/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "libs/app0/lib4/lib4/tsconfig.lib.prod.json"
+              "tsConfig": "libs/app0/lib3/lib3/tsconfig.lib.prod.json"
             }
           }
         },
@@ -1869,18 +1749,18 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/app0/lib4/lib4/src/**/*.ts",
-              "libs/app0/lib4/lib4/src/**/*.html"
+              "libs/app0/lib3/lib3/src/**/*.ts",
+              "libs/app0/lib3/lib3/src/**/*.html"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/app0/lib4/lib4/jest.config.js",
+            "jestConfig": "libs/app0/lib3/lib3/jest.config.js",
             "passWithNoTests": true
           },
-          "outputs": ["coverage/libs/app0/lib4/lib4"]
+          "outputs": ["coverage/libs/app0/lib3/lib3"]
         }
       },
       "schematics": {}
@@ -2264,6 +2144,131 @@
         }
       },
       "schematics": {}
+    },
+    "app0-lib4-lib4": {
+      "projectType": "library",
+      "root": "libs/app0/lib4/lib4",
+      "sourceRoot": "libs/app0/lib4/lib4/src",
+      "prefix": "largerepo",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:ng-packagr-lite",
+          "options": {
+            "tsConfig": "libs/app0/lib4/lib4/tsconfig.lib.json",
+            "project": "libs/app0/lib4/lib4/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/app0/lib4/lib4/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/app0/lib4/lib4/src/**/*.ts",
+              "libs/app0/lib4/lib4/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/app0/lib4/lib4/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/app0/lib4/lib4"]
+        }
+      },
+      "schematics": {}
+    },
+    "app1": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "apps/app1",
+      "sourceRoot": "apps/app1/src",
+      "prefix": "largerepo",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/app1",
+            "index": "apps/app1/src/index.html",
+            "main": "apps/app1/src/main.ts",
+            "polyfills": "apps/app1/src/polyfills.ts",
+            "tsConfig": "apps/app1/tsconfig.app.json",
+            "aot": true,
+            "assets": ["apps/app1/src/favicon.ico", "apps/app1/src/assets"],
+            "styles": ["apps/app1/src/styles.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/app1/src/environments/environment.ts",
+                  "with": "apps/app1/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          },
+          "outputs": ["{options.outputPath}"]
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "app1:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "app1:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "app1:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/app1/src/**/*.ts",
+              "apps/app1/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/app1/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/apps/app1"]
+        }
+      }
     }
   },
   "cli": {
